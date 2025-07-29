@@ -24,12 +24,12 @@ extension UILabel {
 		if shouldStrike {
 			attributes = [
 				.strikethroughStyle: NSUnderlineStyle.single.rawValue,
-				.foregroundColor: UIColor.systemGray2// TODO
+				.foregroundColor: AppColor.Text.strikethrough
 			]
 		} else {
 			attributes = [
 				.strikethroughStyle: 0,
-				.foregroundColor: self.textColor ?? UIColor.label
+				.foregroundColor: self.textColor ?? AppColor.Text.primary
 			]
 		}
 

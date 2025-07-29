@@ -14,6 +14,7 @@ enum AppColor {
 	}
 
 	enum Text {
+		static let primary = UIColor.label
 		static let strikethrough = UIColor.systemGray2
 	}
 }

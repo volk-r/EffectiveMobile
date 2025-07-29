@@ -15,6 +15,4 @@ class TodoListViewController: UIViewController {
 		view.backgroundColor = .lightGray
 	}
 
-
 }
-

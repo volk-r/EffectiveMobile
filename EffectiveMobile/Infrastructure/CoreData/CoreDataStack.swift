@@ -5,8 +5,8 @@
 //  Created by Roman Romanov on 29.07.2025.
 //
 
-import Foundation
 import CoreData
+import Foundation
 
 final class CoreDataStack: CoreDataStackProtocol {
 
@@ -18,7 +18,7 @@ final class CoreDataStack: CoreDataStackProtocol {
 
 	private lazy var persistentContainer: NSPersistentContainer = {
 		let container = NSPersistentContainer(name: "TrackersDataBase")
-		container.loadPersistentStores { (storeDescription, error) in
+		container.loadPersistentStores { (_, error) in
 			if let error = error as NSError? {
 				fatalError("❌ Could not load Tracker DataBase: \(error), \(error.userInfo)")
 			}

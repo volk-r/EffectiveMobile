@@ -5,8 +5,8 @@
 //  Created by Roman Romanov on 29.07.2025.
 //
 
-import UIKit
 import CoreData
+import UIKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -25,4 +25,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	}
 
 }
-

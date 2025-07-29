@@ -1,0 +1,30 @@
+line_length:
+  warning: 300  # Set a warning when lines exceed 300 characters
+type_body_length:
+  warning: 500  # Set a warning when a type body exceeds 500 lines
+file_length:
+  warning: 750  # Set a warning when a file exceeds 750 lines
+
+disabled_rules:
+ - void_function_in_ternary
+ - redundant_string_enum_value
+
+function_parameter_count:
+  warning: 10
+  error: 15
+
+excluded:
+  - .git
+  - Pods
+  - Carthage
+
+opt_in_rules:
+ - sorted_imports
+
+nesting:
+  type_level: # Вложенность типов (классы, структуры, enum)
+    warning: 2
+    error: 3
+  function_level: # Вложенность кода (if, guard, for, switch и т. д.)
+    warning: 3
+    error: 4
