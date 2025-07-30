@@ -24,7 +24,7 @@ protocol TodoListPresenterProtocol: AnyObject {
 	func getTodosCountString(for todoList: TodoListModel?) -> String
 }
 
-class TodoListPresenter: TodoListPresenterProtocol {
+final class TodoListPresenter: TodoListPresenterProtocol {
 
 	// MARK: - Public Properties
 

@@ -14,7 +14,7 @@ protocol TodoListInteractorProtocol: AnyObject {
 	func handleDelete(with id: UUID)
 }
 
-class TodoListInteractor: TodoListInteractorProtocol {
+final class TodoListInteractor: TodoListInteractorProtocol {
 
 	// MARK: - Public Properties
 

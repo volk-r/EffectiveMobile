@@ -16,7 +16,7 @@ protocol TodoListViewControllerProtocol: AnyObject {
 	func reloadCell(with indexPath: IndexPath)
 }
 
-class TodoListViewController: UIViewController, TodoListViewControllerProtocol {
+final class TodoListViewController: UIViewController, TodoListViewControllerProtocol {
 
 	// MARK: - Public Properties
 

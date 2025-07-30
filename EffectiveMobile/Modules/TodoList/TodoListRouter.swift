@@ -15,7 +15,7 @@ protocol TodoListRouterProtocol: AnyObject {
 	func navigateToDetail(from view: UIViewController, with viewModel: TodoModel?)
 }
 
-class TodoListRouter: TodoListRouterProtocol {
+final class TodoListRouter: TodoListRouterProtocol {
 
 	// MARK: - Public Properties
 
