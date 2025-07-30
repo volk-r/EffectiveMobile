@@ -108,6 +108,15 @@ final class TodoListPresenter: TodoListPresenterProtocol {
 	}
 }
 
+// MARK: - TodoCreationProtocol
+
+extension TodoListPresenter: TodoCreationProtocol {
+
+	func reloadTodos() {
+		interactor?.checkForFirstLaunch()
+	}
+}
+
 // MARK: - Private Methods
 
 private extension TodoListPresenter {

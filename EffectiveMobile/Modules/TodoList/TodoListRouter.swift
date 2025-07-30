@@ -46,6 +46,10 @@ final class TodoListRouter: TodoListRouterProtocol {
 	}
 
 	func navigateToDetail(from view: UIViewController, with viewModel: TodoModel?) {
-		print("navigateToDetail")
+		guard let todoViewController = TodoEditRouter.start(viewModel).todoEntryPoint else {
+			return
+		}
+		todoViewController.presenter?.creationDelegate = self.entry?.presenter as? TodoListPresenter
+		view.navigationController?.pushViewController(todoViewController, animated: true)
 	}
 }

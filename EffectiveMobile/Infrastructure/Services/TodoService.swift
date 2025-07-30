@@ -8,9 +8,12 @@
 import Foundation
 
 protocol TodoServiceProtocol {
+	func createTodo(title: String, date: Date, description: String)
+	func updateTodo(with id: UUID, title: String, description: String, date: Date)
 	func deleteTodo(with id: UUID)
 	func toggleTodo(with id: UUID)
 	func fetchTodos() -> [TodoEntity]
+	func fetchTodo(with id: UUID) -> TodoEntity?
 	func fetchTodosFromAPI(completion: @escaping (Result<[TodoEntity], Error>) -> Void)
 	func checkForFirstLaunch(completion: @escaping (Result<[TodoEntity], Error>) -> Void)
 }
@@ -93,5 +96,17 @@ final class TodoService: TodoServiceProtocol {
 				completion(result)
 			}
 		}
+	}
+
+	func createTodo(title: String, date: Date, description: String) {
+		todoStore.createTodo(title: title, date: date, description: description)
+	}
+
+	func fetchTodo(with id: UUID) -> TodoEntity? {
+		return todoStore.fetchTodo(with: id)
+	}
+
+	func updateTodo(with id: UUID, title: String, description: String, date: Date) {
+		todoStore.updateTodo(with: id, title: title, description: description, date: date)
 	}
 }

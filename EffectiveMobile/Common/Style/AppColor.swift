@@ -26,6 +26,7 @@ enum AppColor {
 	enum Text {
 		static let primary = UIColor.label
 		static let secondary = UIColor.secondaryLabel
+		static let placeholder = UIColor.lightGray
 		static let error = UIColor.red
 		static let strikethrough = UIColor.systemGray2
 	}
