@@ -6,8 +6,19 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXContainerItemProxy section */
+		3C85F23A2E3A8A7500D81ABB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3C69FBEF2E37B7DF0022CC8D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3C69FBF62E37B7DF0022CC8D;
+			remoteInfo = EffectiveMobile;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		3C69FBF72E37B7DF0022CC8D /* EffectiveMobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EffectiveMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3C85F2362E3A8A7500D81ABB /* EffectiveMobileTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EffectiveMobileTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -29,10 +40,22 @@
 			path = EffectiveMobile;
 			sourceTree = "<group>";
 		};
+		3C85F2372E3A8A7500D81ABB /* EffectiveMobileTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = EffectiveMobileTests;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		3C69FBF42E37B7DF0022CC8D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3C85F2332E3A8A7500D81ABB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -46,6 +69,7 @@
 			isa = PBXGroup;
 			children = (
 				3C69FBF92E37B7DF0022CC8D /* EffectiveMobile */,
+				3C85F2372E3A8A7500D81ABB /* EffectiveMobileTests */,
 				3C69FBF82E37B7DF0022CC8D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -54,6 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				3C69FBF72E37B7DF0022CC8D /* EffectiveMobile.app */,
+				3C85F2362E3A8A7500D81ABB /* EffectiveMobileTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -84,6 +109,29 @@
 			productReference = 3C69FBF72E37B7DF0022CC8D /* EffectiveMobile.app */;
 			productType = "com.apple.product-type.application";
 		};
+		3C85F2352E3A8A7500D81ABB /* EffectiveMobileTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3C85F23C2E3A8A7500D81ABB /* Build configuration list for PBXNativeTarget "EffectiveMobileTests" */;
+			buildPhases = (
+				3C85F2322E3A8A7500D81ABB /* Sources */,
+				3C85F2332E3A8A7500D81ABB /* Frameworks */,
+				3C85F2342E3A8A7500D81ABB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3C85F23B2E3A8A7500D81ABB /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				3C85F2372E3A8A7500D81ABB /* EffectiveMobileTests */,
+			);
+			name = EffectiveMobileTests;
+			packageProductDependencies = (
+			);
+			productName = EffectiveMobileTests;
+			productReference = 3C85F2362E3A8A7500D81ABB /* EffectiveMobileTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -91,11 +139,15 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1630;
+				LastSwiftUpdateCheck = 1610;
 				LastUpgradeCheck = 1630;
 				TargetAttributes = {
 					3C69FBF62E37B7DF0022CC8D = {
 						CreatedOnToolsVersion = 16.3;
+					};
+					3C85F2352E3A8A7500D81ABB = {
+						CreatedOnToolsVersion = 16.1;
+						TestTargetID = 3C69FBF62E37B7DF0022CC8D;
 					};
 				};
 			};
@@ -114,12 +166,20 @@
 			projectRoot = "";
 			targets = (
 				3C69FBF62E37B7DF0022CC8D /* EffectiveMobile */,
+				3C85F2352E3A8A7500D81ABB /* EffectiveMobileTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		3C69FBF52E37B7DF0022CC8D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3C85F2342E3A8A7500D81ABB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -158,7 +218,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3C85F2322E3A8A7500D81ABB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3C85F23B2E3A8A7500D81ABB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3C69FBF62E37B7DF0022CC8D /* EffectiveMobile */;
+			targetProxy = 3C85F23A2E3A8A7500D81ABB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		3C69FC0E2E37B7E10022CC8D /* Debug */ = {
@@ -352,6 +427,44 @@
 			};
 			name = Release;
 		};
+		3C85F23D2E3A8A7500D81ABB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3T4L6EX6TF;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = EffectiveMobile.EffectiveMobileTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EffectiveMobile.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/EffectiveMobile";
+			};
+			name = Debug;
+		};
+		3C85F23E2E3A8A7500D81ABB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3T4L6EX6TF;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = EffectiveMobile.EffectiveMobileTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EffectiveMobile.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/EffectiveMobile";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -369,6 +482,15 @@
 			buildConfigurations = (
 				3C69FC0E2E37B7E10022CC8D /* Debug */,
 				3C69FC0F2E37B7E10022CC8D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3C85F23C2E3A8A7500D81ABB /* Build configuration list for PBXNativeTarget "EffectiveMobileTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3C85F23D2E3A8A7500D81ABB /* Debug */,
+				3C85F23E2E3A8A7500D81ABB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
