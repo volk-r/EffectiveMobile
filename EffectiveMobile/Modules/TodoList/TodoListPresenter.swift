@@ -21,6 +21,7 @@ protocol TodoListPresenterProtocol: AnyObject {
 	func searchTodo(with query: String) -> TodoListModel?
 
 	func getTodosCount() -> Int
+	func getTodosCountString(for todoList: TodoListModel?) -> String
 }
 
 class TodoListPresenter: TodoListPresenterProtocol {
@@ -41,17 +42,13 @@ class TodoListPresenter: TodoListPresenterProtocol {
 	func interactorDidFetchTodos(with result: Result<[TodoEntity], Error>) {
 		switch result {
 		case.success(let todoModel):
-			let dateFormatter = DateFormatter() // TODO: refactoring
-			dateFormatter.dateFormat = "dd/MM/yyyy"
 			let todos: [TodoModel] = todoModel.map { todo in
-				print("interactorDidFetchTodos todo", todo)
-				let date = Date.now
 				return TodoModel(
 					id: todo.id,
 					title: todo.title,
 					description: todo.taskDescription ?? "",
 					completed: todo.completed,
-					date: dateFormatter.string(from: date)
+					date: DateFormatter.ddMMyyyy.string(from: Date.now)
 				)
 			}
 			let todoListModel: TodoListModel = TodoListModel(todos: todos, total: todos.count)
@@ -77,7 +74,6 @@ class TodoListPresenter: TodoListPresenterProtocol {
 	}
 
 	func didTapCreateNewTodo() {
-		print("didTapCreateNewTodo: new todo")
 		guard let viewController = view as? UIViewController else { return }
 		router?.navigateToDetail(from: viewController, with: nil)
 	}
@@ -106,6 +102,10 @@ class TodoListPresenter: TodoListPresenterProtocol {
 
 		return updatedModel
 	}
+
+	func getTodosCountString(for todoList: TodoListModel?) -> String {
+		pluralizeTask(count: todoList?.todos.count ?? 0)
+	}
 }
 
 // MARK: - Private Methods
@@ -122,5 +122,21 @@ private extension TodoListPresenter {
 					date: todo.date
 				)
 		}
+	}
+
+	func pluralizeTask(count: Int) -> String {
+		let remainder10 = count % 10
+		let remainder100 = count % 100
+
+		let word: String
+		if remainder10 == 1 && remainder100 != 11 {
+			word = "Задача"
+		} else if (2...4).contains(remainder10) && !(12...14).contains(remainder100) {
+			word = "Задачи"
+		} else {
+			word = "Задач"
+		}
+
+		return "\(count) \(word)"
 	}
 }

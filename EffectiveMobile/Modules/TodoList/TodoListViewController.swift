@@ -89,8 +89,7 @@ class TodoListViewController: UIViewController, TodoListViewControllerProtocol {
 			self.updateSearchResults(for: self.searchController)
 			self.reloadTableView()
 			self.tableView.isHidden = false
-			guard let todos else { return }
-			self.taskCountLabel.text = String("\(todos.total) Задач")
+			self.taskCountLabel.text = self.presenter?.getTodosCountString(for: self.todoListModel)
 		}
 	}
 
@@ -185,7 +184,7 @@ private extension TodoListViewController {
 	}
 
 	@objc func didTapCreateNote(_ sender: UIButton) {
-		print("create new note")
+		presenter?.didTapCreateNewTodo()
 	}
 }
 
@@ -209,6 +208,7 @@ extension TodoListViewController: UISearchResultsUpdating {
 		let query = searchController.searchBar.text ?? ""
 		todoListModel = presenter?.searchTodo(with: query)
 		reloadTableView()
+		taskCountLabel.text = presenter?.getTodosCountString(for: todoListModel)
 	}
 }
 
