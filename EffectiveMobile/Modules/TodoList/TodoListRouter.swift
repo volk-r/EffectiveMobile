@@ -27,7 +27,10 @@ final class TodoListRouter: TodoListRouterProtocol {
 		let router = TodoListRouter()
 		let view: TodoListViewControllerProtocol? = TodoListViewController()
 		let presenter: TodoListPresenterProtocol = TodoListPresenter()
-		let interactor: TodoListInteractorProtocol = TodoListInteractor()
+
+		let todoStore = TodoStore()
+		let todoService = TodoService(todoStore: todoStore)
+		let interactor: TodoListInteractorProtocol = TodoListInteractor(todoService: todoService)
 
 		view?.presenter = presenter
 		interactor.presenter = presenter

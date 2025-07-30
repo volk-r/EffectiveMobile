@@ -12,6 +12,7 @@ protocol TodoListInteractorProtocol: AnyObject {
 	func handleDoneTap(with id: UUID)
 	func checkForFirstLaunch()
 	func handleDelete(with id: UUID)
+	func getToDosFromAPI()
 }
 
 final class TodoListInteractor: TodoListInteractorProtocol {
@@ -22,83 +23,47 @@ final class TodoListInteractor: TodoListInteractorProtocol {
 
 	// MARK: - Private Properties
 
-	private let todoStore: TodoStoreProtocol = TodoStore()
+	private let todoService: TodoServiceProtocol
+
+	// MARK: - Initializers
+
+	init(todoService: TodoServiceProtocol = TodoService()) {
+		self.todoService = todoService
+	}
 
 	// MARK: - Public Methods
 
 	func getToDosFromAPI() {
-		// TODO: refactoring
-		let url = URL(string: "https://dummyjson.com/todos")!
-		let task = URLSession.shared.dataTask(with: URLRequest(url: url)) {
-			[weak self] data,
-			_,
-			error in
-			guard
-				let data = data,
-				error == nil,
-				let self = self
-			else {
-				print("got error fetching todos") // TODO: refactoring
-//				self?.presenter?.interactorDidFetchTodos(with: .failure(FetchError.unknown))
-				return
-			}
-			do {
-				print("Get data from api", data)
-				let entities = try JSONDecoder().decode(TodoListModel.self, from: data)
-				var counter = 0
-				for entity in entities.todos {
-					self.todoStore.createTodo(
-						title: entity.title ?? "Задача № \(entity.taskId)",
-						date: Date.now,
-						description: entity.description
-					)
-					counter += 1
-				}
-				let taskArray = self.todoStore.fetchTodos()
-				self.presenter?.interactorDidFetchTodos(with: .success(taskArray))
-			} catch {
-				self.presenter?.interactorDidFetchTodos(with: .failure(error))
+		todoService.fetchTodosFromAPI { [weak self] result in
+			guard let self = self else { return }
+			DispatchQueue.main.async {
+				self.presenter?.interactorDidFetchTodos(with: result)
 			}
 		}
-		task.resume()
 	}
 
 	func handleDoneTap(with id: UUID) {
-		print("handleDoneTap")
-		todoStore.toggleTodo(with: id)
-		let todos = todoStore.fetchTodos()
-		presenter?.interactorDidFetchTodos(with: .success(todos))
+		todoService.toggleTodo(with: id)
+		let todos = todoService.fetchTodos()
+		DispatchQueue.main.async {
+			self.presenter?.interactorDidFetchTodos(with: .success(todos))
+		}
 	}
 
 	func checkForFirstLaunch() {
-//		UserDefaults.standard.set(false, forKey: "launchedBefore")// TODO: refactoring
-		let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
-		if launchedBefore  {
-			print("Not first launch")
-			let taskArray = todoStore.fetchTodos()
-
-			if taskArray.isEmpty {
-				DispatchQueue.main.async {
-//					self.presenter?.interactorDidFetchTodos(with: .failure(CoreDataError.NoTodo))
-					print("no todos")
-					return
-				}
-			} else {
-				print("yes todos")
-				DispatchQueue.main.async {
-					self.presenter?.interactorDidFetchTodos(with: .success(taskArray))
-				}
+		todoService.checkForFirstLaunch { [weak self] result in
+			guard let self = self else { return }
+			DispatchQueue.main.async {
+				self.presenter?.interactorDidFetchTodos(with: result)
 			}
-		} else {
-			print("First launch, setting UserDefault.")
-			getToDosFromAPI()
-			UserDefaults.standard.set(true, forKey: "launchedBefore")
 		}
 	}
 
 	func handleDelete(with id: UUID) {
-		todoStore.deleteTodo(with: id)
-		let todos = todoStore.fetchTodos()
-		presenter?.interactorDidFetchTodos(with: .success(todos))
+		todoService.deleteTodo(with: id)
+		let todos = todoService.fetchTodos()
+		DispatchQueue.main.async {
+			self.presenter?.interactorDidFetchTodos(with: .success(todos))
+		}
 	}
 }

@@ -84,7 +84,6 @@ final class TodoListViewController: UIViewController, TodoListViewControllerProt
 	// MARK: - Public Methods
 
 	func update(with todos: TodoListModel?) {
-		print("update table view")
 		DispatchQueue.main.async {
 			self.updateSearchResults(for: self.searchController)
 			self.reloadTableView()
