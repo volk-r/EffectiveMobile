@@ -29,7 +29,7 @@ extension UILabel {
 		} else {
 			attributes = [
 				.strikethroughStyle: 0,
-				.foregroundColor: self.textColor ?? AppColor.Text.primary
+				.foregroundColor: AppColor.Text.primary
 			]
 		}
 

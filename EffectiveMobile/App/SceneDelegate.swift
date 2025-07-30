@@ -15,9 +15,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 		guard let scene = (scene as? UIWindowScene) else { return }
 
-		window = UIWindow(windowScene: scene)
-		window?.rootViewController = TodoListViewController()
-		window?.makeKeyAndVisible()
+		let todoListRouter = TodoListRouter.start()
+		guard let viewController = todoListRouter.entry else { return }
+		let window = UIWindow(windowScene: scene)
+		window.rootViewController = UINavigationController(rootViewController: viewController)
+		self.window = window
+		self.window?.makeKeyAndVisible()
 	}
 
 	func sceneDidDisconnect(_ scene: UIScene) {

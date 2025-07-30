@@ -17,10 +17,10 @@ final class CoreDataStack: CoreDataStackProtocol {
 	}
 
 	private lazy var persistentContainer: NSPersistentContainer = {
-		let container = NSPersistentContainer(name: "TrackersDataBase")
+		let container = NSPersistentContainer(name: "TodoDataBase")
 		container.loadPersistentStores { (_, error) in
 			if let error = error as NSError? {
-				fatalError("❌ Could not load Tracker DataBase: \(error), \(error.userInfo)")
+				fatalError("❌ Could not load Todo DataBase: \(error), \(error.userInfo)")
 			}
 		}
 		return container

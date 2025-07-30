@@ -11,10 +11,22 @@ enum AppColor {
 
 	enum Background {
 		static let primary = UIColor.systemBackground
+		static let footer = UIColor.systemGray6
+	}
+
+	enum Todo {
+		static let completed = UIColor.systemYellow
+		static let uncompleted = UIColor.secondaryLabel
+	}
+
+	enum Button {
+		static let primary = UIColor.systemYellow
 	}
 
 	enum Text {
 		static let primary = UIColor.label
+		static let secondary = UIColor.secondaryLabel
+		static let error = UIColor.red
 		static let strikethrough = UIColor.systemGray2
 	}
 }
